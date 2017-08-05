@@ -4,7 +4,9 @@
 
 package io.gloagen.persistence.dakamon.user;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Activity {
@@ -12,24 +14,9 @@ public class Activity {
     private Long id;
 
     @ManyToOne(optional = false)
-    private Profile profile;
+    private User user;
 
     public Activity() {
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Profile getProfile() {
-        return profile;
-    }
-
-    public void setProfile(Profile profile) {
-        this.profile = profile;
-    }
 }

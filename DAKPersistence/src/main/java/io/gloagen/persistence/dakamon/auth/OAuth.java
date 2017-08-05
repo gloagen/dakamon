@@ -4,17 +4,26 @@
 
 package io.gloagen.persistence.dakamon.auth;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity(name = "OAUTH")
 public class OAuth {
     @Id
     private long id;
 
-    @OneToOne(mappedBy = "oAuth")
+    @Column(name = "secret")
+    private String secretKey;
+
+    @Column(name = "access")
+    private String acessKey;
+
+    @ManyToOne
+    @JoinColumn(name = "auth_id")
     private Authentication authentication;
+
+    @OneToMany(mappedBy = "oauth")
+    private List<AccessToken> accessTokens;
 
     public OAuth() {
     }

@@ -4,13 +4,11 @@
 
 package io.gloagen.persistence.dakamon.auth;
 
-import io.gloagen.persistence.dakamon.auth.role.Role;
+import io.gloagen.persistence.dakamon.role.Role;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import java.util.Collection;
 
 @Entity
 public class Authorisation {
