@@ -12,7 +12,7 @@ public class Activity {
     private Long id;
 
     @ManyToOne(optional = false)
-    private User user;
+    private Profile profile;
 
     public Activity() {
     }
@@ -25,11 +25,11 @@ public class Activity {
         this.id = id;
     }
 
-    public User getUser() {
-        return user;
+    public Profile getProfile() {
+        return profile;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setProfile(Profile profile) {
+        this.profile = profile;
     }
 }

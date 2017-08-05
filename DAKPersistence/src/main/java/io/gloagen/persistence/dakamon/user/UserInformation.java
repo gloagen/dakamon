@@ -10,25 +10,26 @@ import io.gloagen.persistence.dakamon.auth.Authorisation;
 import javax.persistence.*;
 import java.util.Set;
 
-@Entity
+@Entity(name = "USER_INFO")
 public class UserInformation {
     @Id
-    private Long id;
+    private long id;
 
     @OneToOne(optional = false)
     private Profile profile;
 
     @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "auth_id")
     private Authentication authentication;
 
     public UserInformation() {
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 

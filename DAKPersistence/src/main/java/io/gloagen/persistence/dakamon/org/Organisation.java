@@ -5,24 +5,36 @@
 package io.gloagen.persistence.dakamon.org;
 
 import io.gloagen.persistence.dakamon.auth.role.Role;
+import io.gloagen.persistence.dakamon.user.User;
 
 import javax.persistence.*;
 import java.util.Collection;
-import java.util.List;
+import java.util.Set;
 
-@Entity
+@Entity(name = "ORG")
 public class Organisation {
     @Id
     private long id;
 
     @OneToOne(optional = false)
+    @JoinColumn(name = "info_id")
     private OrganisationInformation organisationInformation;
 
-    @OneToMany(mappedBy = "organisation")
-    private List<OrganisationAssoc> members;
+    @JoinTable(name = "org_role", joinColumns = {
+            @JoinColumn(name = "orgid", referencedColumnName = "ID"),
+    }, inverseJoinColumns = {
+            @JoinColumn(name = "roleid", referencedColumnName = "ID")
+    })
+    @ManyToMany
+    private Collection<Role> roles;
 
-    @OneToMany(mappedBy = "organisation")
-    private List<Role> roles;
+    @JoinTable(name = "user_org", joinColumns = {
+            @JoinColumn(name = "orgid", referencedColumnName = "ID"),
+    }, inverseJoinColumns = {
+            @JoinColumn(name = "userid", referencedColumnName = "ID")
+    })
+    @ManyToMany
+    private Set<User> members;
 
     public Organisation() {
     }
@@ -43,20 +55,19 @@ public class Organisation {
         this.organisationInformation = organisationInformation;
     }
 
-    public List<OrganisationAssoc> getMembers() {
+    public Set<User> getMembers() {
         return members;
     }
 
-    public void setMembers(List<OrganisationAssoc> members) {
+    public void setMembers(Set<User> members) {
         this.members = members;
     }
 
-    public List<Role> getRoles() {
+    public Collection<Role> getRoles() {
         return roles;
     }
 
-    public void setRoles(List<Role> roles) {
+    public void setRoles(Collection<Role> roles) {
         this.roles = roles;
     }
-
 }

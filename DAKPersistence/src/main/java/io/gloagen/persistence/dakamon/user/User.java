@@ -4,7 +4,8 @@
 
 package io.gloagen.persistence.dakamon.user;
 
-import io.gloagen.persistence.dakamon.org.OrganisationAssoc;
+import io.gloagen.persistence.dakamon.auth.role.Role;
+import io.gloagen.persistence.dakamon.org.Organisation;
 
 import javax.persistence.*;
 import java.util.Collection;
@@ -15,18 +16,18 @@ public class User {
     @Id
     private long id;
 
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "user")
+    @OneToOne(fetch = FetchType.EAGER)
     private Profile profile;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private Collection<Preference> preferences;
 
+    @ManyToMany(mappedBy = "members")
+    private Collection<Organisation> organisations;
 
-    @OneToMany(mappedBy = "user")
-    private Collection<OrganisationAssoc> organisations;
+    @ManyToMany(mappedBy = "users")
+    private Collection<Role> roles;
 
-    @OneToMany(mappedBy = "user")
-    private List<Activity> activities;
 
     public User() {
     }
@@ -55,19 +56,4 @@ public class User {
         this.preferences = preferences;
     }
 
-    public Collection<OrganisationAssoc> getOrganisations() {
-        return organisations;
-    }
-
-    public void setOrganisations(Collection<OrganisationAssoc> organisations) {
-        this.organisations = organisations;
-    }
-
-    public List<Activity> getActivities() {
-        return activities;
-    }
-
-    public void setActivities(List<Activity> activities) {
-        this.activities = activities;
-    }
 }

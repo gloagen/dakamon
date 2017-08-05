@@ -4,14 +4,15 @@
 
 package io.gloagen.persistence.dakamon.org;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
-@Entity
+@Entity(name = "ORG_INFO")
 public class OrganisationInformation {
     @Id
-    private Long id;
+    private long id;
 
     @OneToOne(mappedBy = "organisationInformation")
     private Organisation organisation;
@@ -19,11 +20,11 @@ public class OrganisationInformation {
     public OrganisationInformation() {
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 

@@ -7,18 +7,22 @@ package io.gloagen.persistence.dakamon.user;
 import io.gloagen.persistence.dakamon.auth.Authentication;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
 public class Profile {
     @Id
-    private Long id;
+    private long id;
 
-    @OneToOne(mappedBy = "profile")
+    @OneToOne
     private User user;
 
     @OneToOne(mappedBy = "profile")
     private UserInformation userInformation;
+
+    @OneToMany(mappedBy = "profile")
+    private List<Activity> userActivities;
 
     public Profile() {
     }
@@ -31,13 +35,13 @@ public class Profile {
         this.id = id;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
+//    public User getUser() {
+//        return user;
+//    }
+//
+//    public void setUser(User user) {
+//        this.user = user;
+//    }
 
     public UserInformation getUserInformation() {
         return userInformation;

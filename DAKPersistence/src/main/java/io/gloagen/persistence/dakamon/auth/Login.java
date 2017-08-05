@@ -6,10 +6,7 @@ package io.gloagen.persistence.dakamon.auth;
 
 import io.gloagen.persistence.dakamon.user.Profile;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 @Entity
 public class Login {
@@ -17,6 +14,7 @@ public class Login {
     private long id;
 
     @OneToOne
+    @JoinColumn(name = "auth_id")
     private Authentication authentication;
 
     public Login() {

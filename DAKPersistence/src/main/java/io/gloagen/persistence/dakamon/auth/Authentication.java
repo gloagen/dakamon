@@ -8,7 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
-@Entity
+@Entity(name = "AUTH")
 public class Authentication {
     @Id
     private long id;
