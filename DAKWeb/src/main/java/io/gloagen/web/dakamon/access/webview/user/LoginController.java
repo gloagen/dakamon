@@ -16,4 +16,5 @@ public interface LoginController {
     @Produces({MediaType.TEXT_HTML})
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     Response login(MultivaluedMap form);
+
 }

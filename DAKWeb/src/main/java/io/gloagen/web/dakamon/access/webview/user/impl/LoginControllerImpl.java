@@ -20,6 +20,6 @@ public class LoginControllerImpl implements LoginController {
 
         LoginForm loginForm = userFormService.parseLoginForm(form);
 
-        return Response.ok(loginForm).build();
+        return Response.ok(loginForm.toString()).build();
     }
 }
