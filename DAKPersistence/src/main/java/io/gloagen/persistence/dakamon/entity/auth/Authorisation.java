@@ -6,13 +6,15 @@ package io.gloagen.persistence.dakamon.entity.auth;
 
 import io.gloagen.persistence.dakamon.entity.role.Role;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
-@Entity
+@Entity(name = "AUTHZN")
 public class Authorisation {
     @Id
+    @GeneratedValue(generator = "IDGeneTable")
+    @TableGenerator(name = "IDGeneTable", table = "IDGene",
+                    pkColumnName = "ID_NAME", valueColumnName = "ID_VAL",
+                    pkColumnValue = "AUTHZN_GEN")
     private long id;
 
     @ManyToOne

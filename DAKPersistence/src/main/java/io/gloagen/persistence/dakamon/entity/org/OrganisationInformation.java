@@ -4,13 +4,15 @@
 
 package io.gloagen.persistence.dakamon.entity.org;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 @Entity(name = "ORG_INFO")
 public class OrganisationInformation {
     @Id
+    @GeneratedValue(generator = "IDGeneTable")
+    @TableGenerator(name = "IDGeneTable", table = "IDGene",
+                    pkColumnName = "ID_NAME", valueColumnName = "ID_VAL",
+                    pkColumnValue = "ORG_INFO_GEN")
     private long id;
 
     @OneToOne(mappedBy = "organisationInformation")

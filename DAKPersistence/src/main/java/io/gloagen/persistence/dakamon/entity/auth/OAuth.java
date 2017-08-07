@@ -10,6 +10,10 @@ import java.util.List;
 @Entity(name = "OAUTH")
 public class OAuth {
     @Id
+    @GeneratedValue(generator = "IDGeneTable")
+    @TableGenerator(name = "IDGeneTable", table = "IDGene",
+                    pkColumnName = "ID_NAME", valueColumnName = "ID_VAL",
+                    pkColumnValue = "OAUTH_GEN")
     private long id;
 
     @Column(name = "secret")

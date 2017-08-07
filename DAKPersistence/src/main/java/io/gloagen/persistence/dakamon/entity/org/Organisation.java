@@ -14,6 +14,10 @@ import java.util.List;
 @Entity(name = "ORG")
 public class Organisation {
     @Id
+    @GeneratedValue(generator = "IDGeneTable")
+    @TableGenerator(name = "IDGeneTable", table = "IDGene",
+                    pkColumnName = "ID_NAME", valueColumnName = "ID_VAL",
+                    pkColumnValue = "ORG_GEN")
     private long id;
 
     @OneToOne(optional = false)
@@ -31,7 +35,7 @@ public class Organisation {
     @JoinTable(name = "user_org", joinColumns = {
             @JoinColumn(name = "org_id", referencedColumnName = "ID"),
     }, inverseJoinColumns = {
-            @JoinColumn(name = "profile_id", referencedColumnName = "ID")
+            @JoinColumn(name = "profile_id", referencedColumnName = "profile_id")
     })
     @ManyToMany
     private List<Profile> userProfiles;

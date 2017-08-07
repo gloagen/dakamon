@@ -14,6 +14,11 @@ import java.util.List;
 @Entity
 public class Profile {
     @Id
+    @GeneratedValue(generator = "IDGeneTable")
+    @TableGenerator(name = "IDGeneTable", table = "IDGene",
+                    pkColumnName = "ID_NAME", valueColumnName = "ID_VAL",
+                    pkColumnValue = "PROFL_GEN")
+    @Column(name = "profile_id")
     private long id;
 
     @ManyToOne

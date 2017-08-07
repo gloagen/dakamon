@@ -1,4 +1,4 @@
-package io.gloagen.model.dakamon.rest.object.form.user;
+package io.gloagen.dak.core.rest.object.form.user;
 
 import javax.ws.rs.core.MultivaluedMap;
 

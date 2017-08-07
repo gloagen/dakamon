@@ -4,14 +4,17 @@
 
 package io.gloagen.persistence.dakamon.entity.user;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
-@Entity
+@Entity(name = "AUDIT")
 public class Activity {
     @Id
-    private Long id;
+    @GeneratedValue(generator = "IDGeneTable")
+    @TableGenerator(name = "IDGeneTable", table = "IDGene",
+                    pkColumnName = "ID_NAME", valueColumnName = "ID_VAL",
+                    pkColumnValue = "AUDIT_GEN")
+    @Column(name = "AUDIT_ID")
+    private long id;
 
     @ManyToOne(optional = false)
     private User user;

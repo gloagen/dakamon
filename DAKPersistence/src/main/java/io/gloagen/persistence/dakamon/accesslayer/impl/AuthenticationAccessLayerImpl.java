@@ -4,12 +4,12 @@ import io.gloagen.persistence.dakamon.accesslayer.object.AuthenticationAccessLay
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceUnit;
+import javax.persistence.PersistenceContext;
 
 @Stateless
 public class AuthenticationAccessLayerImpl implements AuthenticationAccessLayer {
 
-    @PersistenceUnit
+    @PersistenceContext(name = "DakamonPU")
     EntityManager entityManager;
 
     public AuthenticationAccessLayerImpl() {

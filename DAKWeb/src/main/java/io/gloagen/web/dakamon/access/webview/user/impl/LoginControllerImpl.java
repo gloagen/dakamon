@@ -1,7 +1,7 @@
 package io.gloagen.web.dakamon.access.webview.user.impl;
 
-import io.gloagen.model.dakamon.rest.object.form.user.LoginForm;
-import io.gloagen.model.dakamon.rest.object.form.user.UserFormService;
+import io.gloagen.dak.core.rest.object.form.user.LoginForm;
+import io.gloagen.dak.core.rest.object.form.user.UserFormService;
 import io.gloagen.web.dakamon.access.webview.user.LoginController;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

@@ -1,4 +1,6 @@
-package io.gloagen.model.dakamon.rest.object.form.user;
+package io.gloagen.dak.core.rest.object.form.user;
+
+import org.apache.commons.lang3.StringUtils;
 
 public class UserAccountForm {
 
@@ -9,6 +11,31 @@ public class UserAccountForm {
     private String password;
 
     public UserAccountForm() {
+    }
+
+    public boolean isValidForm() {
+
+        if (StringUtils.isBlank(firstname)) {
+            return false;
+        }
+
+        if (StringUtils.isBlank(action)) {
+            return false;
+        }
+
+        if (StringUtils.isBlank(lastname)) {
+            return false;
+        }
+
+        if (StringUtils.isBlank(email)) {
+            return false;
+        }
+
+        if (StringUtils.isBlank(password)) {
+            return false;
+        }
+
+        return true;
     }
 
     public String getFirstname() {

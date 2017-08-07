@@ -12,6 +12,11 @@ import java.util.List;
 @Entity(name = "USER_INFO")
 public class UserInformation {
     @Id
+    @GeneratedValue(generator = "IDGeneTable")
+    @TableGenerator(name = "IDGeneTable", table = "IDGene",
+                    pkColumnName = "ID_NAME", valueColumnName = "ID_VAL",
+                    pkColumnValue = "USER_INFO_GEN")
+    @Column(name = "info_id")
     private long id;
 
     @OneToOne
@@ -23,6 +28,9 @@ public class UserInformation {
 
     @OneToOne(optional = false)
     private User user;
+
+    @Column(unique = true, length = 50)
+    private String username;
 
     public UserInformation() {
     }

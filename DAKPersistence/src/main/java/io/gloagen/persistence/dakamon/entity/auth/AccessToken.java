@@ -1,14 +1,15 @@
 package io.gloagen.persistence.dakamon.entity.auth;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity(name = "TOKEN")
 public class AccessToken {
 
     @Id
+    @GeneratedValue(generator = "IDGeneTable")
+    @TableGenerator(name = "IDGeneTable", table = "IDGene",
+                    pkColumnName = "ID_NAME", valueColumnName = "ID_VAL",
+                    pkColumnValue = "TOKEN_GEN")
     private long id;
 
     @ManyToOne

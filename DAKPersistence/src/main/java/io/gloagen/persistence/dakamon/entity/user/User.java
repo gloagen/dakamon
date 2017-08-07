@@ -4,15 +4,17 @@
 
 package io.gloagen.persistence.dakamon.entity.user;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
 public class User {
     @Id
+    @GeneratedValue(generator = "IDGeneTable")
+    @TableGenerator(name = "IDGeneTable", table = "IDGene",
+                    pkColumnName = "ID_NAME", valueColumnName = "ID_VAL",
+                    pkColumnValue = "USER_GEN")
+    @Column(name = "user_id")
     private long id;
 
     @OneToMany(mappedBy = "user")
@@ -20,6 +22,15 @@ public class User {
 
     @OneToOne(mappedBy = "user")
     private UserInformation information;
+
+    @Column(name = "fname")
+    private String firstname;
+
+    @Column(name = "lname")
+    private String lastname;
+
+    @Column(name = "midname")
+    private String middlenames;
 
     public User() {
     }

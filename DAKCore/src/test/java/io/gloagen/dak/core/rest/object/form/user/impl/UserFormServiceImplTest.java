@@ -1,4 +1,4 @@
-package io.gloagen.model.dakamon.rest.object.form.user.impl;
+package io.gloagen.dak.core.rest.object.form.user.impl;
 
 import org.junit.Test;
 

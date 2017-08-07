@@ -1,8 +1,8 @@
 package io.gloagen.web.dakamon.access.webform;
 
-import io.gloagen.model.dakamon.rest.object.form.user.LoginForm;
-import io.gloagen.model.dakamon.rest.object.form.user.UserAccountForm;
-import io.gloagen.model.dakamon.rest.object.form.user.UserFormService;
+import io.gloagen.dak.core.rest.object.form.user.LoginForm;
+import io.gloagen.dak.core.rest.object.form.user.UserAccountForm;
+import io.gloagen.dak.core.rest.object.form.user.UserFormService;
 
 import javax.ws.rs.core.MultivaluedMap;
 

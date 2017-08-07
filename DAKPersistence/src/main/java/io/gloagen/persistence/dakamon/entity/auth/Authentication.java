@@ -4,15 +4,16 @@
 
 package io.gloagen.persistence.dakamon.entity.auth;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity(name = "AUTH")
 public class Authentication {
     @Id
+    @GeneratedValue(generator = "IDGeneTable")
+    @TableGenerator(name = "IDGeneTable", table = "IDGene",
+                    pkColumnName = "ID_NAME", valueColumnName = "ID_VAL",
+                    pkColumnValue = "AUTH_GEN")
     private long id;
 
     @OneToMany(mappedBy = "authentication")
