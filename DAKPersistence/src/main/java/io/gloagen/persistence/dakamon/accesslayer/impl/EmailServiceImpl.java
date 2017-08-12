@@ -17,4 +17,9 @@ public class EmailServiceImpl implements EmailService {
                                                                         EmailAddress.class);
         return query.getSingleResult();
     }
+
+    @Override
+    public void save(EmailAddress emailAddress) {
+        entityManager.persist(emailAddress);
+    }
 }

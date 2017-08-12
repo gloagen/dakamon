@@ -14,13 +14,12 @@ public class User {
     @TableGenerator(name = "IDGeneTable", table = "IDGene",
                     pkColumnName = "ID_NAME", valueColumnName = "ID_VAL",
                     pkColumnValue = "USER_GEN")
-    @Column(name = "user_id")
     private long id;
 
     @OneToMany(mappedBy = "user")
     private List<Activity> activities;
 
-    @OneToOne(mappedBy = "user")
+    @OneToOne(mappedBy = "user", cascade = CascadeType.MERGE)
     private UserInformation information;
 
     @Column(name = "fname")
@@ -35,4 +34,51 @@ public class User {
     public User() {
     }
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public List<Activity> getActivities() {
+        return activities;
+    }
+
+    public void setActivities(List<Activity> activities) {
+        this.activities = activities;
+    }
+
+    public UserInformation getInformation() {
+        return information;
+    }
+
+    public void setInformation(UserInformation information) {
+        this.information = information;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public String getMiddlenames() {
+        return middlenames;
+    }
+
+    public void setMiddlenames(String middlenames) {
+        this.middlenames = middlenames;
+    }
 }

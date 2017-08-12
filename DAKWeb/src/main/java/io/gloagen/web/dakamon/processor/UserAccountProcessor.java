@@ -1,7 +1,8 @@
-package io.gloagen.dak.core.processor.user.account;
+package io.gloagen.web.dakamon.processor;
 
-import io.gloagen.dak.core.processor.exception.UserAccountException;
 import io.gloagen.dak.core.rest.object.form.user.UserAccountForm;
+import io.gloagen.persistence.dakamon.exception.UserAccountException;
+import io.gloagen.web.dakamon.processor.user.account.UserAccount;
 
 public interface UserAccountProcessor {
 

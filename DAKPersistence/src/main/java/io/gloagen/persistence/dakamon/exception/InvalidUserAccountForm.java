@@ -1,4 +1,4 @@
-package io.gloagen.dak.core.processor.exception;
+package io.gloagen.persistence.dakamon.exception;
 
 import java.security.PrivilegedActionException;
 

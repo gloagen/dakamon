@@ -26,7 +26,7 @@ public class UserInformation {
     @OneToMany(mappedBy = "userInformation")
     private List<Profile> profiles;
 
-    @OneToOne(optional = false)
+    @OneToOne(optional = false, cascade = CascadeType.MERGE)
     private User user;
 
     @Column(unique = true, length = 50)
@@ -35,4 +35,43 @@ public class UserInformation {
     public UserInformation() {
     }
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public Authentication getAuthentication() {
+        return authentication;
+    }
+
+    public void setAuthentication(Authentication authentication) {
+        this.authentication = authentication;
+    }
+
+    public List<Profile> getProfiles() {
+        return profiles;
+    }
+
+    public void setProfiles(List<Profile> profiles) {
+        this.profiles = profiles;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 }

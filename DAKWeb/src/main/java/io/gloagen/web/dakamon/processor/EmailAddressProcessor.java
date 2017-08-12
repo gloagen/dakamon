@@ -1,4 +1,4 @@
-package io.gloagen.dak.core.processor.user.account;
+package io.gloagen.web.dakamon.processor;
 
 import io.gloagen.dak.core.exception.InvalidEmailAdressException;
 import io.gloagen.persistence.dakamon.entity.user.EmailAddress;

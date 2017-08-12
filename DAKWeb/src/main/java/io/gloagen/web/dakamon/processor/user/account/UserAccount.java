@@ -1,4 +1,4 @@
-package io.gloagen.dak.core.processor.user.account;
+package io.gloagen.web.dakamon.processor.user.account;
 
 import javax.xml.bind.annotation.XmlRootElement;
 

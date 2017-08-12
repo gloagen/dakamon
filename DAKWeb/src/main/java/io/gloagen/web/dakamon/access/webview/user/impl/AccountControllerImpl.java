@@ -1,11 +1,11 @@
 package io.gloagen.web.dakamon.access.webview.user.impl;
 
-import io.gloagen.dak.core.processor.exception.UserAccountException;
-import io.gloagen.dak.core.processor.user.account.UserAccount;
-import io.gloagen.dak.core.processor.user.account.UserAccountProcessor;
 import io.gloagen.dak.core.rest.object.form.user.UserAccountForm;
 import io.gloagen.dak.core.rest.object.form.user.UserFormService;
+import io.gloagen.persistence.dakamon.exception.UserAccountException;
 import io.gloagen.web.dakamon.access.webview.user.AccountController;
+import io.gloagen.web.dakamon.processor.UserAccountProcessor;
+import io.gloagen.web.dakamon.processor.user.account.UserAccount;
 
 import javax.inject.Inject;
 import javax.ws.rs.core.MultivaluedMap;

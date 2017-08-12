@@ -1,14 +1,16 @@
-package io.gloagen.dak.core.processor.user.account.impl;
+package io.gloagen.web.dakamon.processor.user.account.impl;
 
 import io.gloagen.dak.core.exception.InvalidEmailAdressException;
-import io.gloagen.dak.core.processor.exception.InvalidUserAccountForm;
-import io.gloagen.dak.core.processor.exception.UserAccountException;
-import io.gloagen.dak.core.processor.user.account.EmailAddressProcessor;
-import io.gloagen.dak.core.processor.user.account.UserAccount;
-import io.gloagen.dak.core.processor.user.account.UserAccountProcessor;
 import io.gloagen.dak.core.rest.object.form.user.UserAccountForm;
 import io.gloagen.persistence.dakamon.accesslayer.object.UserAccessLayer;
 import io.gloagen.persistence.dakamon.entity.user.EmailAddress;
+import io.gloagen.persistence.dakamon.entity.user.User;
+import io.gloagen.persistence.dakamon.entity.user.UserInformation;
+import io.gloagen.persistence.dakamon.exception.InvalidUserAccountForm;
+import io.gloagen.persistence.dakamon.exception.UserAccountException;
+import io.gloagen.web.dakamon.processor.EmailAddressProcessor;
+import io.gloagen.web.dakamon.processor.UserAccountProcessor;
+import io.gloagen.web.dakamon.processor.user.account.UserAccount;
 
 import javax.inject.Inject;
 
@@ -32,7 +34,19 @@ public class UserAccountProcessorImpl implements UserAccountProcessor {
                 throw new InvalidUserAccountForm("The form contains invalid entries");
             }
 
+
+            User user = new User();
+            user.setFirstname(accountForm.getFirstname());
+            user.setLastname(accountForm.getLastname());
+            userAccessLayer.save(user);
+
+            UserInformation userInformation = new UserInformation();
+            userInformation.setUser(user);
+            userAccessLayer.save(userInformation);
+
             EmailAddress emailAddress = emailAddressProcessor.createEmailAddress(accountForm.getEmail());
+            emailAddress.setUserInformation(user.getInformation());
+
 
 
             //TODO

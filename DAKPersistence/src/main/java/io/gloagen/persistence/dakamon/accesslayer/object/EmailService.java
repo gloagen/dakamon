@@ -9,4 +9,6 @@ import javax.persistence.NamedQuery;
 public interface EmailService {
 
     EmailAddress find(String email);
+
+    void save(EmailAddress emailAddress);
 }

@@ -1,5 +1,7 @@
 package io.gloagen.persistence.dakamon.entity.user;
 
+import cloud.gloagen.utility.persistence.DSBooleanConverter;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -16,7 +18,7 @@ public class EmailAddress {
     @Column(length = 320, nullable = false, unique = true, name = "email_addesss")
     private String email;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "userinfo_id", nullable = false)
     private UserInformation userInformation;
 
@@ -24,26 +26,15 @@ public class EmailAddress {
     @Temporal(TemporalType.TIMESTAMP)
     private Date created;
 
-    @Column
-    private boolean validated;
+    @Column(length = 5, name = "isValidated")
+    @Convert(converter = DSBooleanConverter.class)
+    private Boolean validated;
+    //
+    @Column(name = "isPrimary", length = 5)
+    @Convert(converter = DSBooleanConverter.class)
+    private Boolean primary;
 
     public EmailAddress() {
-    }
-
-    public Date getCreated() {
-        return created;
-    }
-
-    public void setCreated(Date created) {
-        this.created = created;
-    }
-
-    public boolean isValidated() {
-        return validated;
-    }
-
-    public void setValidated(boolean validated) {
-        this.validated = validated;
     }
 
     public long getId() {
@@ -68,5 +59,29 @@ public class EmailAddress {
 
     public void setUserInformation(UserInformation userInformation) {
         this.userInformation = userInformation;
+    }
+
+    public Date getCreated() {
+        return created;
+    }
+
+    public void setCreated(Date created) {
+        this.created = created;
+    }
+
+    public Boolean getValidated() {
+        return validated;
+    }
+
+    public void setValidated(Boolean validated) {
+        this.validated = validated;
+    }
+
+    public Boolean getPrimary() {
+        return primary;
+    }
+
+    public void setPrimary(Boolean primary) {
+        this.primary = primary;
     }
 }

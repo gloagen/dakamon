@@ -1,9 +1,9 @@
-package io.gloagen.dak.core.processor.user.account.impl;
+package io.gloagen.web.dakamon.processor.user.account.impl;
 
 import io.gloagen.dak.core.exception.InvalidEmailAdressException;
-import io.gloagen.dak.core.processor.user.account.EmailAddressProcessor;
 import io.gloagen.persistence.dakamon.accesslayer.object.EmailService;
 import io.gloagen.persistence.dakamon.entity.user.EmailAddress;
+import io.gloagen.web.dakamon.processor.EmailAddressProcessor;
 import org.apache.commons.validator.routines.EmailValidator;
 
 import javax.inject.Inject;
@@ -19,8 +19,9 @@ public class EmailAddressProcessorImpl implements EmailAddressProcessor {
             emailAddress.setCreated(new Date());
             emailAddress.setEmail(email);
             emailAddress.setValidated(false);
+            return emailAddress;
         }
-        throw new InvalidEmailAdressException(String.format("The email '%s' supplied is invalid", email));
+        throw new InvalidEmailAdressException(String.format("The email " + email + " supplied is invalid", email));
     }
 
     public boolean isValidEmailAddress(String email) {
