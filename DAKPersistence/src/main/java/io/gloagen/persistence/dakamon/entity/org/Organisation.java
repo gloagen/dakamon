@@ -4,8 +4,8 @@
 
 package io.gloagen.persistence.dakamon.entity.org;
 
-import io.gloagen.persistence.dakamon.entity.role.Role;
-import io.gloagen.persistence.dakamon.entity.user.Profile;
+import io.gloagen.persistence.dakamon.entity.auth.Permission;
+import io.gloagen.persistence.dakamon.entity.user.UserProfile;
 
 import javax.persistence.*;
 import java.util.Collection;
@@ -14,10 +14,10 @@ import java.util.List;
 @Entity(name = "ORG")
 public class Organisation {
     @Id
-    @GeneratedValue(generator = "IDGeneTable")
-    @TableGenerator(name = "IDGeneTable", table = "IDGene",
-                    pkColumnName = "ID_NAME", valueColumnName = "ID_VAL",
-                    pkColumnValue = "ORG_GEN")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+//    @TableGenerator(name = "IDGeneTable", table = "IDGene",
+//                    pkColumnName = "ID_NAME", valueColumnName = "ID_VAL",
+//                    pkColumnValue = "ORG_GEN")
     private long id;
 
     @OneToOne(optional = false)
@@ -30,15 +30,15 @@ public class Organisation {
             @JoinColumn(name = "roleid", referencedColumnName = "ID")
     })
     @ManyToMany
-    private Collection<Role> roles;
+    private Collection<Permission> permissions;
 
     @JoinTable(name = "user_org", joinColumns = {
             @JoinColumn(name = "org_id", referencedColumnName = "ID"),
     }, inverseJoinColumns = {
-            @JoinColumn(name = "profile_id", referencedColumnName = "profile_id")
+            @JoinColumn(name = "profile_id", referencedColumnName = "ID")
     })
     @ManyToMany
-    private List<Profile> userProfiles;
+    private List<UserProfile> userProfiles;
 
     public Organisation() {
     }

@@ -1,8 +1,10 @@
 package io.gloagen.persistence.dakamon.accesslayer.impl;
 
 import io.gloagen.persistence.dakamon.accesslayer.object.UserAccessLayer;
+import io.gloagen.persistence.dakamon.entity.auth.UserCredential;
 import io.gloagen.persistence.dakamon.entity.user.User;
-import io.gloagen.persistence.dakamon.entity.user.UserInformation;
+import io.gloagen.persistence.dakamon.entity.user.UserAccount;
+import io.gloagen.persistence.dakamon.entity.user.UserProfile;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -20,7 +22,17 @@ public class UserAccessLayerImpl implements UserAccessLayer {
     }
 
     @Override
-    public void save(UserInformation userInformation) {
-        entityManager.persist(userInformation);
+    public void save(UserAccount userAccount) {
+        entityManager.persist(userAccount);
+    }
+
+    @Override
+    public void save(UserProfile userProfile) {
+        entityManager.persist(userProfile);
+    }
+
+    @Override
+    public void save(UserCredential credential) {
+        entityManager.persist(credential);
     }
 }

@@ -10,17 +10,17 @@ import java.util.List;
 @Entity
 public class User {
     @Id
-    @GeneratedValue(generator = "IDGeneTable")
-    @TableGenerator(name = "IDGeneTable", table = "IDGene",
-                    pkColumnName = "ID_NAME", valueColumnName = "ID_VAL",
-                    pkColumnValue = "USER_GEN")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+//    @TableGenerator(name = "IDGeneTable", table = "IDGene",
+//                    pkColumnName = "ID_NAME", valueColumnName = "ID_VAL",
+//                    pkColumnValue = "USER_GEN")
     private long id;
 
     @OneToMany(mappedBy = "user")
     private List<Activity> activities;
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.MERGE)
-    private UserInformation information;
+    private UserAccount information;
 
     @Column(name = "fname")
     private String firstname;
@@ -50,11 +50,11 @@ public class User {
         this.activities = activities;
     }
 
-    public UserInformation getInformation() {
+    public UserAccount getInformation() {
         return information;
     }
 
-    public void setInformation(UserInformation information) {
+    public void setInformation(UserAccount information) {
         this.information = information;
     }
 

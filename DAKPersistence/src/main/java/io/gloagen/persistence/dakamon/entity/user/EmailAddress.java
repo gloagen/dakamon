@@ -8,10 +8,10 @@ import java.util.Date;
 @Entity(name = "USER_MAIL")
 public class EmailAddress {
     @Id
-    @GeneratedValue(generator = "IDGeneTable")
-    @TableGenerator(name = "IDGeneTable", table = "IDGene",
-                    pkColumnName = "ID_NAME", valueColumnName = "ID_VAL",
-                    pkColumnValue = "EMAIL_GEN")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+//    @TableGenerator(name = "IDGeneTable", table = "IDGene",
+//                    pkColumnName = "ID_NAME", valueColumnName = "ID_VAL",
+//                    pkColumnValue = "EMAIL_GEN")
     @Column(name = "email_id")
     private long id;
 
@@ -19,8 +19,8 @@ public class EmailAddress {
     private String email;
 
     @ManyToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "userinfo_id", nullable = false)
-    private UserInformation userInformation;
+    @JoinColumn(name = "uacc", nullable = false)
+    private UserAccount userAccount;
 
     @Column
     @Temporal(TemporalType.TIMESTAMP)
@@ -33,6 +33,7 @@ public class EmailAddress {
     @Column(name = "isPrimary", length = 5)
     @Convert(converter = DSBooleanConverter.class)
     private Boolean primary;
+
 
     public EmailAddress() {
     }
@@ -53,12 +54,12 @@ public class EmailAddress {
         this.email = email;
     }
 
-    public UserInformation getUserInformation() {
-        return userInformation;
+    public UserAccount getUserAccount() {
+        return userAccount;
     }
 
-    public void setUserInformation(UserInformation userInformation) {
-        this.userInformation = userInformation;
+    public void setUserAccount(UserAccount userAccount) {
+        this.userAccount = userAccount;
     }
 
     public Date getCreated() {

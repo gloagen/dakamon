@@ -1,1 +1,0 @@
-package io.gloagen.web.dakamon.object;

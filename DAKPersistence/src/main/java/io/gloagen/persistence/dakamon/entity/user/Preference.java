@@ -9,10 +9,10 @@ import javax.persistence.*;
 @Entity(name = "PREFS")
 public class Preference {
     @Id
-    @GeneratedValue(generator = "IDGeneTable")
-    @TableGenerator(name = "IDGeneTable", table = "IDGene",
-                    pkColumnName = "ID_NAME", valueColumnName = "ID_VAL",
-                    pkColumnValue = "PREF_GEN")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+//    @TableGenerator(name = "IDGeneTable", table = "IDGene",
+//                    pkColumnName = "ID_NAME", valueColumnName = "ID_VAL",
+//                    pkColumnValue = "PREF_GEN")
     @Column(name = "pref_id")
     private long id;
 
