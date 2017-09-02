@@ -32,8 +32,12 @@ public class EmailAddressProcessorImpl implements EmailAddressProcessor {
         throw new InvalidEmailAdressException(String.format("The email " + email + " supplied is invalid", email));
     }
 
-    public boolean isValidEmailAddress(String email) {
-        return EmailValidator.getInstance().isValid(email);
+    public boolean isValidEmailAddress(String email) throws InvalidEmailAdressException {
+        if (!EmailValidator.getInstance().isValid(email)) {
+            throw new InvalidEmailAdressException(String.format("Email address %s is invalid", email));
+        }
+
+        return true;
     }
 
     public boolean exist(String email) {

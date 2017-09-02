@@ -1,4 +1,6 @@
-package io.gloagen.dak.core.encrypt;
+package io.gloagen.dak.core.util;
+
+import io.gloagen.dak.core.encrypt.HashedPassword;
 
 public interface PasswordUtils {
 
@@ -7,5 +9,7 @@ public interface PasswordUtils {
     HashedPassword generatePasswordHash(String plainPassword);
 
     boolean compare(HashedPassword hashedPassword, String plainPassword);
+
+    boolean compare(String hashedPassword, String plainPassword);
 
 }

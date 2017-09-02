@@ -1,9 +1,9 @@
 package io.gloagen.web.dakamon.processor.impl;
 
 import io.gloagen.dak.core.encrypt.HashedPassword;
-import io.gloagen.dak.core.encrypt.PasswordUtils;
 import io.gloagen.dak.core.exception.InvalidEmailAdressException;
 import io.gloagen.dak.core.rest.object.form.user.UserAccountForm;
+import io.gloagen.dak.core.util.PasswordUtils;
 import io.gloagen.persistence.dakamon.accesslayer.object.UserAccessLayer;
 import io.gloagen.persistence.dakamon.entity.auth.UserCredential;
 import io.gloagen.persistence.dakamon.entity.user.EmailAddress;

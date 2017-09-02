@@ -10,7 +10,7 @@ public class DSBooleanConverter implements AttributeConverter<Boolean, String> {
 
     @Override
     public String convertToDatabaseColumn(Boolean value) {
-        return Boolean.TRUE.equals(value) ? "TRUE" : "FALSE";
+        return Boolean.TRUE.equals(value) ? "T" : "F";
     }
 
     @Override

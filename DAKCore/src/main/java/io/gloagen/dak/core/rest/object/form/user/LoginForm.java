@@ -3,15 +3,12 @@ package io.gloagen.dak.core.rest.object.form.user;
 public class LoginForm {
 
     private String username;
-
     private String password;
 
-    public LoginForm() {
-    }
+    private String remoteHost;
+    private String clientOperatingSystem;
 
-    public LoginForm(String username, String password) {
-        this.username = username;
-        this.password = password;
+    public LoginForm() {
     }
 
     public String getUsername() {
@@ -30,11 +27,19 @@ public class LoginForm {
         this.password = password;
     }
 
-    @Override
-    public String toString() {
-        return "LoginForm{" +
-               "username='" + username + '\'' +
-               ", password='" + password + '\'' +
-               '}';
+    public String getRemoteHost() {
+        return remoteHost;
+    }
+
+    public void setRemoteHost(String remoteHost) {
+        this.remoteHost = remoteHost;
+    }
+
+    public String getClientOperatingSystem() {
+        return clientOperatingSystem;
+    }
+
+    public void setClientOperatingSystem(String clientOperatingSystem) {
+        this.clientOperatingSystem = clientOperatingSystem;
     }
 }

@@ -12,6 +12,33 @@ public class UserName {
     private String username;
 
     @OneToOne
-    @JoinColumn(name = "acc_id", nullable = false)
+    @JoinColumn(name = "uacc", nullable = false)
     private UserAccount userAccount;
+
+    public UserName() {
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public UserAccount getUserAccount() {
+        return userAccount;
+    }
+
+    public void setUserAccount(UserAccount userAccount) {
+        this.userAccount = userAccount;
+    }
 }

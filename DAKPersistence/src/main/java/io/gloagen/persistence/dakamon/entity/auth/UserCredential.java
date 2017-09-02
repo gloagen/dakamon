@@ -11,9 +11,6 @@ import java.util.List;
 public class UserCredential {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-//    @TableGenerator(name = "IDGeneTable", table = "IDGene",
-//                    pkColumnName = "ID_NAME", valueColumnName = "ID_VAL",
-//                    pkColumnValue = "LOGN_GEN")
     private long id;
 
     @Column(name = "sKey", unique = true, length = 500)
@@ -24,7 +21,7 @@ public class UserCredential {
     private String accessKey;
 
     @OneToMany(mappedBy = "userCredential")
-    private List<OAuth> oAuths;
+    private List<AccessToken> accessTokens;
 
     public UserCredential() {
     }
@@ -61,11 +58,11 @@ public class UserCredential {
         this.accessKey = accessKey;
     }
 
-    public List<OAuth> getoAuths() {
-        return oAuths;
+    public List<AccessToken> getAccessTokens() {
+        return accessTokens;
     }
 
-    public void setoAuths(List<OAuth> oAuths) {
-        this.oAuths = oAuths;
+    public void setAccessTokens(List<AccessToken> accessTokens) {
+        this.accessTokens = accessTokens;
     }
 }

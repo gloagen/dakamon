@@ -1,7 +1,7 @@
-package io.gloagen.dak.core.encrypt.impl;
+package io.gloagen.dak.core.util.impl;
 
 import io.gloagen.dak.core.encrypt.HashedPassword;
-import io.gloagen.dak.core.encrypt.PasswordUtils;
+import io.gloagen.dak.core.util.PasswordUtils;
 import org.mindrot.jbcrypt.BCrypt;
 
 public class PasswordUtilsImpl implements PasswordUtils {
@@ -28,7 +28,12 @@ public class PasswordUtilsImpl implements PasswordUtils {
 
     @Override
     public boolean compare(HashedPassword hashedPassword, String plainPassword) {
-        return BCrypt.checkpw(plainPassword, hashedPassword.getHash());
+        return compare(hashedPassword.getHash(), plainPassword);
+    }
+
+    @Override
+    public boolean compare(String hashedPassword, String plainPassword) {
+        return BCrypt.checkpw(plainPassword, hashedPassword);
     }
 
 }

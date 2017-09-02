@@ -18,6 +18,7 @@ public class UserAccount {
 //                    pkColumnName = "ID_NAME", valueColumnName = "ID_VAL",
 //                    pkColumnValue = "USER_ACC_GEN")
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "uacc_id")
     private long id;
 
     @OneToOne(cascade = CascadeType.MERGE)

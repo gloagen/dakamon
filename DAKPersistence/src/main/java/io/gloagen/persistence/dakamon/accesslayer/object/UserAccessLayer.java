@@ -14,4 +14,8 @@ public interface UserAccessLayer {
     void save(UserProfile userProfile);
 
     void save(UserCredential credential);
+
+    UserAccount findAccountByEmail(String usernameOrEmail);
+
+    UserAccount findAccountByUsername(String usernameOrEmail);
 }

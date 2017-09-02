@@ -1,5 +1,8 @@
 package io.gloagen.web.dakamon.controller;
 
+import io.gloagen.dak.core.exception.InvalidEmailAdressException;
+import io.gloagen.dak.core.exception.InvalidUsernameOrPasswordException;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -13,8 +16,8 @@ public interface LoginController {
 
 
     @POST
-    @Produces({MediaType.TEXT_HTML})
+    @Produces({MediaType.TEXT_PLAIN})
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-    Response login(MultivaluedMap form);
+    Response login(MultivaluedMap form) throws InvalidUsernameOrPasswordException, InvalidEmailAdressException;
 
 }

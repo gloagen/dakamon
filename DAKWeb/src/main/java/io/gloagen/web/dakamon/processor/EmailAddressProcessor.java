@@ -8,7 +8,7 @@ public interface EmailAddressProcessor {
 
     EmailAddress createEmailAddress(String email, UserAccount userAccount) throws InvalidEmailAdressException;
 
-    boolean isValidEmailAddress(String email);
+    boolean isValidEmailAddress(String email) throws InvalidEmailAdressException;
 
     boolean exist(String email);
 }
